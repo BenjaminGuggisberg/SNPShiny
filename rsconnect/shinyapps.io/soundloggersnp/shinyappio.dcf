@@ -1,0 +1,10 @@
+name: shinyappio
+title:
+username: soundloggersnp
+account: soundloggersnp
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 10752331
+bundleId: 8025379
+url: https://soundloggersnp.shinyapps.io/shinyappio/
+version: 1
