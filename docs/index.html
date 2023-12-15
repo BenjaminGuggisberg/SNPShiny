@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Soundy Demo</title>
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.2/dist/reset.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.2/dist/reveal.css">
+    <link rel="stylesheet" href="https://unpkg.com/reveal.js@4.1.2/dist/theme/black.css" id="theme">
+    <style>
+        .slides p {
+            font-size: 20px;
+        }
+
+        .slides video {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .reveal .progress {
+            height: 10px;
+            background-color: rgba(0, 174, 255, 0.671);
+        }
+
+        .reveal .progress span {
+            background-color: lightblue;
+        }
+
+        .reveal .controls a {
+            color: lightblue;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="reveal">
+        <div class="slides">
+            <section>
+                <div style="height: 50vh;">
+                    <h3>Welcome to Soundy-SNP</h3>
+                    <p>
+                        This is an application for the visualization and analysis of collected sound data (.WAV files)
+                        from the Swiss National Park along the Ofenpass road. The aim of this study is to try to
+                        identify dependencies and patterns between the song activity of songbirds and anthropogenic
+                        noise.
+                        The technical implementation of the data classification was carried out using a deep learning
+                        model from <a href="https://github.com/seth814/Audio-Classification">Seth Adams</a>. R-Shiny was
+                        then applied to visualize
+                        this classified data to provide a user-friendly analysis tool for further studies.
+                    </p>
+                    <hr style="border-style: dashed; color: white;">
+                    <p>
+                        Check out Soundy on GitHub <a
+                            href="https://github.com/BenjaminGuggisberg/SNPShiny"><strong>here</strong></a> !
+                    </p>
+                    <p>
+                        Check out Soundy Shiny <a
+                            href="https://soundloggersnp.shinyapps.io/shinyappio/"><strong>here</strong></a> !
+                    </p>
+                </div>
+            </section>
+
+            <section>
+                <div style="height: 50vh;">
+                    <h3>Aggregated Analysis</h3>
+                    <p>
+                        In the aggregated analysis view, you can calculate and visualize the average value of the 4
+                        classified categories bird, traffic noise, nature and silence for a time period of your choice
+                        (if data is available). The classification was performed using a deep learning model. The
+                        aggregated visualization allows conclusions and studies about the influence of traffic noise on
+                        the activities of songbirds in the Swiss National Park.
+                        The percentages of the classes are also displayed as glyphs at the device location for each
+                        15-minute interval over the averaged 24 hours of your choice.
+                        <br><br>
+                        <strong>
+                            Check out our app demo!
+                        </strong>
+                    </p>
+                    <video width="640" height="360" controls>
+                        <source src="AggregatedAnalysis.mp4" type="video/mp4">
+                        Dein Browser unterstützt das Video-Tag nicht.
+                    </video>
+                </div>
+            </section>
+
+            <section>
+                <div style="height: 50vh;">
+                    <h3>Generate Overview</h3>
+                    <p>
+                        In the Overview tab, you can display the glyphs for any selection of locations and the time
+                        window of your choice. As in the aggregated analysis, the data is averaged here for any time
+                        period.
+                        <br><br>
+                        <strong>
+                            Check out the demo here!
+                        </strong>
+                    </p>
+                    <video width="640" height="360" controls>
+                        <source src="OverviewAnalysis.mp4" type="video/mp4">
+                        Dein Browser unterstützt das Video-Tag nicht.
+                    </video>
+                </div>
+            </section>
+
+            <section>
+                <div style="height: 50vh;">
+                    <h3>Metadata Description</h3>
+                    <p>
+                        The Metadata tab lists all information on the input parameters, a brief model description and
+                        pending or upcoming updates.
+                    </p>
+                    <video width="640" height="360" controls>
+                        <source src="Metadata.mp4" type="video/mp4">
+                        Dein Browser unterstützt das Video-Tag nicht.
+                    </video>
+                </div>
+            </section>
+
+            <section>
+                <div style="height: 50vh;">
+                    <h3>About Us</h3>
+                    <p>
+                        Last but not least, our contact details are listed here. If you have any questions, please
+                        contact the person responsible directly.
+                    </p>
+                    <img src="ContactUs.png" alt="ContactUs" />
+                </div>
+            </section>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/reveal.js@4.1.2/dist/reveal.js"></script>
+    <script>
+        // Initialisiere reveal.js
+        Reveal.initialize();
+    </script>
+</body>
+
+</html>
