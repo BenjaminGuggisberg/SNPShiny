@@ -86,10 +86,14 @@ ui <- fluidPage(
           ),
           selectInput("inputLocation", "Logger prefix", choices = c("Along the road", "Transverse axis", "All")),
           selectInput("inputLogger", "Logger", choices = sites),
+          selectInput("ClassSelector", "Select Classes", choices = c("All Classes", "Specific Classes"), selected = "All Classes"),
           selectInput("inputWeekday", "Weekday", choices = c("All", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")),
-          checkboxGroupInput("class_checkbox", "Select Classes",
-                             choices = c("stille_count_mean", "vogel_count_mean", "laerm_count_mean", "natur_count_mean", "average_RMS_dB_mean"),
-                             selected = c("stille_count_mean", "vogel_count_mean", "laerm_count_mean", "natur_count_mean"),
+          conditionalPanel(
+            condition = "input.ClassSelector == 'Specific Classes'",
+            checkboxGroupInput("class_checkbox", "Select Classes",
+                               choices = c("stille_count_mean", "vogel_count_mean", "laerm_count_mean", "natur_count_mean", "average_RMS_dB_mean"),
+                               selected = c("stille_count_mean", "vogel_count_mean", "laerm_count_mean", "natur_count_mean"),
+            )
           ),
           sliderInput("time_slider", "Select Time", 
                       min = 0, 
@@ -109,18 +113,18 @@ ui <- fluidPage(
           conditionalPanel(
             condition = "!output.snp_plot",
             tags$div(
-              style = "border: 2px dashed #ccc; padding: 20px; text-align: center; color: #777; height: 430px; margin-bottom: 20px;",
+              style = "border: 2px dashed #ccc; padding: 20px; text-align: center; color: #777; height: 50vh; margin-bottom: 20px;",
               "Waiting for plot..."
             ),
             tags$div(
               style = "margin-top: 20px;",
-              leafletOutput("defaultmap", height = "250")
+              leafletOutput("defaultmap", height = "30vh")
             )
           ),
           # conditionalPanel(
             # condition = "plot_frame !== null",
             plotOutput("snp_plot"),
-            leafletOutput("map", height = "340"),
+            leafletOutput("map", height = "325"),
           # )
         )
       )
@@ -167,22 +171,10 @@ ui <- fluidPage(
           actionButton("next_overview", "+ 15 MM"),
           tags$div(class = "spacer2"),  
           actionButton("overviewer", "Show Map"),
-          tags$div(class = "spacer2"),
-          HTML("
-          <div style='background: white; padding: 10px'>
-          <p><strong>Legend</strong></p>
-            <ul style='list-style-type: none; padding-left: 0;'>
-              <li style='color: #D34045;'>&#9632; Noise</li>
-              <li style='color: #71FF5C;'>&#9632; Nature</li>
-              <li style='color: #64C6FA;'>&#9632; Silence</li>
-              <li style='color: #E67C3E;'>&#9632; Bird</li>
-            </ul>
-          </div>
-               ")
           ),
         
         mainPanel(
-          leafletOutput("overviewMap", height = "750", width = "1100"),
+          leafletOutput("overviewMap", height = "600", width = "100%"),
         )
       )
     ),
@@ -507,6 +499,24 @@ server <- function(input, output, session) {
           options = layersControlOptions(collapsed = FALSE)  
         )
     })
+    
+    observe({
+      leafletProxy("map") %>%
+        addControl(
+          html = HTML("
+        <div style='background: white; padding: 10px'>
+          <p><strong>Legend</strong></p>
+          <ul style='list-style-type: none; padding-left: 0;'>
+            <li style='color: #D34045;'>&#9632; Noise</li>
+            <li style='color: #71FF5C;'>&#9632; Nature</li>
+            <li style='color: #64C6FA;'>&#9632; Silence</li>
+            <li style='color: #E67C3E;'>&#9632; Bird</li>
+          </ul>
+        </div>
+      "),
+          position = "bottomleft"
+        )
+    })
 
     output$snp_plot <- renderPlot({
       createRelativPlot(plot_frame, input$time_slider)
@@ -778,6 +788,24 @@ server <- function(input, output, session) {
       # shinyjs::disable("loadingAnimation")
       
       return(leaflet_obj)
+    })
+    
+    observe({
+      leafletProxy("overviewMap") %>%
+        addControl(
+          html = HTML("
+        <div style='background: white; padding: 10px'>
+          <p><strong>Legend</strong></p>
+          <ul style='list-style-type: none; padding-left: 0;'>
+            <li style='color: #D34045;'>&#9632; Noise</li>
+            <li style='color: #71FF5C;'>&#9632; Nature</li>
+            <li style='color: #64C6FA;'>&#9632; Silence</li>
+            <li style='color: #E67C3E;'>&#9632; Bird</li>
+          </ul>
+        </div>
+      "),
+          position = "bottomleft"
+        )
     })
   
     
