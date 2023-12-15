@@ -24,7 +24,7 @@ sites <- c("ls01", "ls02", "ls03", "ls04", "ls05", "ost-01-u", "ls06", "west-01-
            "west-04-u", "west-04-o", "west-05-u", "west-05-o", "west-05-m")
 
 ui <- fluidPage(
-  # shinyjs::useShinyjs(),
+  tags$head(tags$script(src = "https://use.fontawesome.com/releases/v5.15.3/js/all.js")),
   tags$head(
     tags$style(HTML("
       /* Fügen Sie benutzerdefiniertes CSS hier ein */
@@ -49,6 +49,15 @@ ui <- fluidPage(
       }
       h4 {
         color: black;
+      }
+      .custom-button {
+        float: right;
+        background: none;
+        border: none;
+      }
+      .custom-button:hover {
+        border: 1px solid #92a8D1;
+        background: none;
       }
     "))
   ),
@@ -101,12 +110,11 @@ ui <- fluidPage(
                       value = 48, 
                       step = 1,
                       ticks = FALSE),
-          textOutput("selected_time_text"),
-          tags$div(class = "spacer"),  
-          actionButton("back_button", "- 15 MM"),
-          actionButton("next_button", "+ 15 MM"),
-          tags$div(class = "spacer2"),  
-          actionButton("submit", "Submit")
+          div(textOutput("selected_time_text"), style = "text-align: center;"),
+          actionButton("back_button", label = "15 Min", icon = icon("chevron-left"), class = "custom-button", style="float: left;"),
+          actionButton("next_button", HTML("15 Min <i class='fas fa-chevron-right'></i>"), class = "custom-button"),
+          tags$div(HTML("<br><br><br>")),
+          actionButton("submit", "Plot Data")
         ),
         
         mainPanel(
@@ -166,10 +174,9 @@ ui <- fluidPage(
           ),
           selectInput("inputweekday", "Weekday", choices = c("All", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")),
           selectInput("inputTime", "Select Time", choices = timeslots, selected = "12:00:00"),
-          tags$div(class = "spacer"),  
-          actionButton("back_overview", "- 15 MM"),
-          actionButton("next_overview", "+ 15 MM"),
-          tags$div(class = "spacer2"),  
+          actionButton("back_button", label = "15 Min", icon = icon("chevron-left"), class = "custom-button", style="float: left;"),
+          actionButton("next_button", HTML("15 Min <i class='fas fa-chevron-right'></i>"), class = "custom-button"),
+          tags$div(HTML("<br><br><br>")), 
           actionButton("overviewer", "Show Map"),
           ),
         
