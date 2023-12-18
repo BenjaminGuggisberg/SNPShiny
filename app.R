@@ -71,6 +71,7 @@ ui <- fluidPage(
       tags$div(class = "spacer3"),
       sidebarLayout(
         sidebarPanel(
+          style = "height: 80vh;",
           fluidRow(
             column(12, dateRangeInput("date_range", "Date Range", 
                                       start = "2023-06-01", end = "2023-06-30",
@@ -111,6 +112,7 @@ ui <- fluidPage(
                       step = 1,
                       ticks = FALSE),
           div(textOutput("selected_time_text"), style = "text-align: center;"),
+          tags$div(HTML("<br>")),
           actionButton("back_button", label = "15 Min", icon = icon("chevron-left"), class = "custom-button", style="float: left;"),
           actionButton("next_button", HTML("15 Min <i class='fas fa-chevron-right'></i>"), class = "custom-button"),
           tags$div(HTML("<br><br><br>")),
@@ -121,7 +123,7 @@ ui <- fluidPage(
           conditionalPanel(
             condition = "!output.snp_plot",
             tags$div(
-              style = "border: 2px dashed #ccc; padding: 20px; text-align: center; color: #777; height: 50vh; margin-bottom: 20px;",
+              style = "border: 2px dashed #ccc; padding: 20px; text-align: center; color: #777; height: 45vh; margin-bottom: 5vh;",
               "Waiting for plot..."
             ),
             tags$div(
@@ -174,8 +176,8 @@ ui <- fluidPage(
           ),
           selectInput("inputweekday", "Weekday", choices = c("All", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday")),
           selectInput("inputTime", "Select Time", choices = timeslots, selected = "12:00:00"),
-          actionButton("back_button", label = "15 Min", icon = icon("chevron-left"), class = "custom-button", style="float: left;"),
-          actionButton("next_button", HTML("15 Min <i class='fas fa-chevron-right'></i>"), class = "custom-button"),
+          actionButton("back_overview", label = "15 Min", icon = icon("chevron-left"), class = "custom-button", style="float: left;"),
+          actionButton("next_overview", HTML("15 Min <i class='fas fa-chevron-right'></i>"), class = "custom-button"),
           tags$div(HTML("<br><br><br>")), 
           actionButton("overviewer", "Show Map"),
           ),

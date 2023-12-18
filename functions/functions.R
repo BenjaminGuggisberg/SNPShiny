@@ -82,7 +82,7 @@ createRelativPlot <- function(data, selected_time) {
       "average_RMS_dB_mean" = "#000000" # Schwarz
     ), breaks = class_order, na.value = "grey90") +
     facet_wrap(~Place, ncol = 1) +
-    geom_vline(xintercept = selected_time, linetype = "dashed", color = "black", size=0.7) +
+    geom_vline(xintercept = selected_time, linetype = "dashed", color = "black", linewidth=0.7) +
     scale_x_discrete(breaks = unique(data$Time)[c(1, 17, 33, 49, 65, 81, 96)]) +
     scale_y_discrete(labels = c(
       "average_RMS_dB_mean" = "Volume [dB]",
