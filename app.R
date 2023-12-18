@@ -133,8 +133,11 @@ ui <- fluidPage(
           ),
           # conditionalPanel(
             # condition = "plot_frame !== null",
-            plotOutput("snp_plot"),
-            leafletOutput("map", height = "325"),
+          div(
+            style = "height: 45vh; margin-bottom: 5vh;",
+            plotOutput("snp_plot")
+          ),
+          leafletOutput("map", height = "30vh"),
           # )
         )
       )
@@ -144,6 +147,7 @@ ui <- fluidPage(
       tags$div(class = "spacer3"),
       sidebarLayout(
         sidebarPanel(
+          style = "height: 75vh;",
           fluidRow(
             column(12, dateRangeInput("date_range2", "Date Range", 
                                       start = "2023-06-01", end = "2023-06-30",
@@ -183,7 +187,7 @@ ui <- fluidPage(
           ),
         
         mainPanel(
-          leafletOutput("overviewMap", height = "600", width = "100%"),
+          leafletOutput("overviewMap", height = "75vh", width = "100%"),
         )
       )
     ),
