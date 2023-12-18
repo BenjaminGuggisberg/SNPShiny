@@ -131,8 +131,13 @@ merge_dataframes_with_fixed_metadata <- function(df, by_x, by_y, all_x = TRUE) {
 # Zuvor: size = 100
 # stroke='#ffffff' stroke-width='1' 
 # Jetzt: size = doppelter dB Wert zur Veranschaulichung der Lautstärke auf der Karte
-draw_svg <- function(dB, natur, laerm, vogel, stille, name) {
+draw_svg <- function(dB, n, l, v, s, name) {
   size <- dB * 2
+  size <- dB * 2
+  natur <- sqrt(n)
+  laerm <- sqrt(l)
+  vogel <- sqrt(v)
+  stille <- sqrt(s)
   
   values <- c(natur,laerm,vogel,stille)
   
@@ -173,8 +178,13 @@ draw_svg <- function(dB, natur, laerm, vogel, stille, name) {
   
 }
 
-draw_multiple_svg <- function(dB, natur, laerm, vogel, stille, name) {
+draw_multiple_svg <- function(dB, n, l, v, s, name) {
   size <- dB
+  size <- dB * 2
+  natur <- sqrt(n)
+  laerm <- sqrt(l)
+  vogel <- sqrt(v)
+  stille <- sqrt(s)
   
   values <- c(natur,laerm,vogel,stille)
   
