@@ -71,7 +71,7 @@ ui <- fluidPage(
       tags$div(class = "spacer3"),
       sidebarLayout(
         sidebarPanel(
-          style = "height: 80vh;",
+          style = "min-height: 80vh;",
           fluidRow(
             column(12, dateRangeInput("date_range", "Date Range", 
                                       start = "2023-06-01", end = "2023-06-30",
@@ -147,7 +147,7 @@ ui <- fluidPage(
       tags$div(class = "spacer3"),
       sidebarLayout(
         sidebarPanel(
-          style = "height: 75vh;",
+          style = "min-height: 75vh;",
           fluidRow(
             column(12, dateRangeInput("date_range2", "Date Range", 
                                       start = "2023-06-01", end = "2023-06-30",
