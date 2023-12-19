@@ -1,36 +1,36 @@
-Installationen
+Installations
 > Installation MongoDBCompass
-> Installation R und RStudio
+> Installation R and RStudio
 
-Datenbank restore
->In Commandzeile zur Location des DB Dumps navigieren
-	Beispiel: cd C:\Soundlogger_SNP\Dump\ClassifiedAudioSNP
->In Command MongoDB Dump restore ausführen
+Restore database
+>Navigate to the location of the DB dump in the command line
+	Example: cd C:\Soundlogger_SNP\Dump\ClassifiedAudioSNP
+>Execute restore in command MongoDB dump
 	mongorestore --uri "mongodb://localhost:27017" 
 
-App starten
-> RStudio starten 
-> .Rproj-Datei in einem neuen Projekt öffnen
-> Main Application befindet sich in app.R mit spezifischen functions in functions/functions.R
+Start the app
+> Start RStudio 
+> Open .Rproj file in a new project
+> Main Application is located in app.R with specific functions in functions/functions.R
 > app.R run
 
-Übersicht Verzeichnisse und Dateien
+Overview of directories and files
 > docs 
-	enthält GitHubPages
+	contains GitHubPages
 > functions
 	functions.R
-		ausgelagerte Funktionen
+		outsourced functions
 > glyphs
-	Speicherpfad Glyphen aus der aggregierten Analyse
+	Storage path glyphs from the aggregated analysis
 > overview_sites
-	Speicherpfad Glyphen aus der Overview
+	Storage path glyphs from the overview
 > renv
-	Management für R-Projektumgebung - zum Upload auf shinyapps.io
+	Management for R project environment - for upload to shinyapps.io
 > rsconnect
-	Dient zur Bereitstellung der Inhalte aus RStudio in shinyapps.io
+	Used to provide the content from RStudio in shinyapps.io
 > www
-	Speicherpfad der Bilder
-> projekt_soundlogger.Rproj
-	Speicherpfad R-Projekt
+	Storage path of the images
+> project_soundlogger.Rproj
+	Storage path R project
 > app.R
 	Main Application
